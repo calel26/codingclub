@@ -1,0 +1,62 @@
+<script>
+    // pleas no steal code
+    // the activity is fun i swear!
+
+    const loginForm = document.getElementById("login")
+    const nameBox = document.getElementById("text")
+    const chat = document.getElementById("chat")
+    const messages = document.getElementById("messages")
+    const messageBox = document.getElementById("messagetext")
+    const sendMessageForm = document.getElementById("sendmessage")
+
+    let conn = new WebSocket("wss://chat.lawsmat.com/chat")
+    conn.addEventListener("message", m => {
+        const d = JSON.parse(m.data)
+        if(d.welcome) {
+            // hide the login
+            loginForm.style.display = "none"
+            chat.style.display = "block"
+        }
+        if(d.message) {
+            const elem = document.createElement("p")
+            elem.style.margin = "0.1rem"
+            elem.innerText = `${d.name}: ${d.message}`
+            messages.appendChild(elem)
+            messages.scroll({
+                top: 99999999
+            })
+        }
+    })
+
+    sendMessageForm.addEventListener("submit", e => {
+        e.preventDefault()
+        conn.send(JSON.stringify({
+            message: messageBox.value
+        }))
+        sendMessageForm.reset()
+    })
+
+    loginForm.addEventListener("submit", e => {
+        e.preventDefault()
+        loginForm.querySelector("button").disabled = true
+        conn.send(JSON.stringify({
+            name: nameBox.value
+        }))
+    })
+</script>
+
+<h1>End Goal</h1>
+<div>
+    <form id="login">
+        <input id="text" placeholder="name" type="text" required />
+        <button type="submit">login</button>
+    </form>
+    <div id="chat" style="display: none;">
+        <div id="messages" style="height: 70vh; overflow: scroll;">
+        </div>
+        <form id="sendmessage">
+            <input id="messagetext" type="text" placeholder="message"/>
+            <button type="submit">send!</button>
+        </form>
+    </div>
+</div>

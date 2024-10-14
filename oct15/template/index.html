@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <script>
+        // convenience function
+        function addMessage(username, contents) {
+            // these lines make a message element
+            //
+            // in HTML, it looks like this:
+            // <p>username: message</p>
+            const messages = document.getElementById("messages")
+            const msg = document.createElement("p")
+            msg.innerText = `${username}: ${contents}`
+
+            // scroll to the bottom of the messages box,
+            // because new messages are put at the bottom
+            messages.scroll({
+                top: 9999999
+            })
+
+            // add the message to the messages box
+            messages.appendChild(messages)
+        }
+
+        function main() {
+            const sendForm = document.getElementById("sendForm")
+            const message = document.getElementById("message")
+
+            // TODO: write your logic here!
+        }
+        
+        // this runs our main functon when the page has loaded fully
+        // don't worry about it too much
+        document.addEventListener("DOMContentLoaded", main)
+    </script>
+    <style>
+        /* your styles here */
+    </style>
+</head>
+<body>
+    <h1>Chat</h1>
+    <div id="messages">
+        <!-- this space will get filled with messages! -->
+    </div>
+    <form id="sendForm">
+        <input id="message" type="input" placeholder="message" />
+        <button type="submit">send!</button>
+    </form>
+</body>
+</html>
