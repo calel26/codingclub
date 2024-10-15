@@ -30,6 +30,41 @@
             const message = document.getElementById("message")
 
             // TODO: write your logic here!
+            const conn = new WebSocket("wss://chat.lawsmat.com/chat")
+            conn.addEventListener("open", () => {
+                const name = prompt("please enter your name:")
+                // const name = "lawson"
+                conn.send(JSON.stringify({
+                    name: name
+                }))
+            })
+
+            conn.addEventListener("message", e => {
+                console.log("message!", e.data)
+                const data = JSON.parse(e.data)
+                if (data.welcome) {
+                    // we're in and can start sending and receiving messages
+                    alert("welcome")
+                }
+                if (data.message) {
+                    addMessage(data.name, data.message)
+                }
+            })
+
+            conn.addEventListener("close", () => {
+                console.log("close :(")
+            })
+
+            sendForm.addEventListener("submit", e => {
+                e.preventDefault()
+                const messageText = message.value
+
+                conn.send(JSON.stringify({
+                    message: messageText
+                }))
+
+                sendForm.reset()
+            })
         }
         
         // this runs our main functon when the page has loaded fully

@@ -1,0 +1,10 @@
+<pre style="font-family: 'Courier New', Courier, monospace;">
+sendForm.addEventListener("submit", e => {
+    e.preventDefault()
+    const messageText = message.value
+
+    conn.send(JSON.stringify({
+        message: messageText
+    }))
+})
+</pre>

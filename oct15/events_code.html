@@ -1,0 +1,13 @@
+<pre style="font-family: 'Courier New', Courier, monospace;">
+conn.addEventListener("open", () => {
+    console.log("open!")
+})
+
+conn.addEventListener("message", e => {
+    console.log("message!", e.data)
+})
+
+conn.addEventListener("close", () => {
+    console.log("close :(")
+})
+</pre>

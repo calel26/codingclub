@@ -1,0 +1,17 @@
+<style>
+    .code {
+        font-family: 'Courier New', Courier, monospace;
+    }
+</style>
+
+<h1>Connecting to the Socket</h1>
+<ul>
+    <li>JavaScript</li>
+    <li>Simply make a new WebSocket object</li>
+    <li><span class="code">wss</span> instead of <span class="code">https</span></li>
+    <li>I made a server: <span class="code">wss://chat.lawsmat.com/chat</span></li>
+</ul>
+
+<span class="code" style="display: %code_shown%;">
+const conn = new WebSocket("wss://chat.lawsmat.com/chat")
+</span>

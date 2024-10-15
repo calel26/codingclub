@@ -1,0 +1,17 @@
+<div>
+    <h1>Logging in</h1>
+    <ul>
+        <li>Send your name in a message</li>
+        <li style="font-weight: %fontweight|normal%;">Only send to an open connection!</li>
+        <li>The server expects object with one field: name</li>
+        <li>Encoding: <span style="font-family: 'Courier New', Courier, monospace;">JSON.stringify(<em>your object here</em>)</span></li>
+        <li>Sending: Use <span style="font-family: 'Courier New', Courier, monospace;">conn.send(string)</span></li>
+    </ul>
+    <div style="display: %codedisplay|none%;">
+        <pre style="font-family: 'Courier New', Courier, monospace;">
+conn.send(JSON.stringify({
+    name: "john doe"
+}))
+        </pre>
+    </div>
+</div>

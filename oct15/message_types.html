@@ -1,0 +1,54 @@
+<style>
+    .split {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .div {
+        width: 2px;
+        height: 100%;
+        background-color: #aab3b3;
+    }
+
+    .sending, .receiving {
+        min-width: 30vw;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    .message {
+        border: 1px solid #aab3b3;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        margin: 0.25rem 0.5rem;
+    }
+</style>
+
+<h1>How does the server work?</h1>
+<p>It sends and receives JSON messages</p>
+<div class="split">
+    <div class="sending">
+        <em>Sending</em>
+        <div class="message" style="border-color: #ca9ee6; display: %login|none%;">
+            <b>name</b>: string
+        </div>
+        <div class="message" style="border-color: #8caaee; display: %msg|none%;">
+            <b>message</b>: string
+        </div>
+    </div>
+    <div class="div"></div>
+    <div class="receiving">
+        <div class="right">
+            <em>Receiving</em>
+        </div>
+        <div class="message" style="border-color: #a6d189; display: %welcome|none%;">
+            <b>welcome</b>: random text
+        </div>
+        <div class="message" style="border-color: #ef9f76; display: %recv_msg|none%;">
+            <b>message</b>: string<br />
+            <b>name</b>: string
+        </div>
+    </div>
+</div>
