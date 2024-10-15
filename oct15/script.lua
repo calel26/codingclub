@@ -131,7 +131,7 @@ s:slide("receiving_data")
     :title("Receiving Data")
     :template("receiving_data")
     :action("show code", true, function (_)
-        set_all("codedisplay", "block")
+        set_all("codedisplay2", "block")
         s:update_all()
     end)
 
